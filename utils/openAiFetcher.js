@@ -9,7 +9,6 @@ const configuration = new Configuration({
   const openai = new OpenAIApi(configuration);
   
    openAIFetchData = async (prompt) => {
-    console.log(prompt);
     try {
         const completion = await openai.createCompletion({
           model: "text-davinci-003",
