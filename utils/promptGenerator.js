@@ -7,9 +7,9 @@ const promptGenerator = async ({
     employeer_job_description}) => {
 
         const prompt = 
-        promptDefault.promptDefault + 
-        employer_name + employer_job_title + 
-        employeer_keywords + 
+        promptDefault.promptDefault  +
+        "arbeidstaker: " + employer_name  + "stillingstittel: " +  employer_job_title + 
+        "nøkkelord: " + employeer_keywords + "stillingsbeskrivelse: "
         employeer_job_description;
 
         return prompt;
