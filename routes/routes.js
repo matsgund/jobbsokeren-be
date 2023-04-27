@@ -9,6 +9,7 @@ const puppeteer = require("puppeteer"); // Import Puppeteer
 const { check, validationResult } = require('express-validator');
 const htmlToDocx = require('html-to-docx');
 
+
 router.post('/job-application-data', [
     // validate input 
     check('applicant_job_advertisement_url')
