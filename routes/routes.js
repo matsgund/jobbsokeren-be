@@ -136,7 +136,7 @@ async (req, res) => {
             stream.pipe(res);
         } catch (error) {
             console.error(error);
-            res.status(500).send('An error occurred while generating the Word document.');
+            res.status(500).send(error);
         }
     } 
 });
