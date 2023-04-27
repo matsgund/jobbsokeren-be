@@ -8,6 +8,7 @@ const configuration = new Configuration({
 
   const openai = new OpenAIApi(configuration);
   
+  
    openAIFetchData = async (prompt) => {
     try {
         const completion = await openai.createCompletion({

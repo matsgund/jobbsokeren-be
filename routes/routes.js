@@ -119,7 +119,7 @@ async (req, res) => {
             await browser.close();
           } catch (error) {
             console.error(error);
-            res.status(500).send("An error occurred while generating the PDF.");
+            res.status(500).send(error);
           }
     }
     if (type === 'docx') {
