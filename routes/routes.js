@@ -8,6 +8,7 @@ const { Readable } = require('stream');
 const puppeteer = require("puppeteer"); // Import Puppeteer
 const { check, validationResult } = require('express-validator');
 const htmlToDocx = require('html-to-docx');
+const logger = require('./utils/logger');
 
 
 router.post('/job-application-data', [
@@ -73,6 +74,7 @@ async (req, res) => {
         //     employer_zip_code:"0150 Oslo"
         res.json(jobApplicationResult);
     } catch (error) {
+        logger.error(`Error in /job-application-data: ${error}`);
         console.log(error);
     } 
 });
@@ -109,7 +111,7 @@ async (req, res) => {
       
             // Set the appropriate response headers
             res.setHeader("Content-Type", "application/pdf");
-            res.setHeader("Content-Disposition", "attachment; filename=output.pdf");
+            res.setHeader("Content-Disposition", "attachment; filename=application.pdf");
       
             // Convert the buffer to a stream
             const stream = Readable.from(pdfBuffer);
@@ -119,7 +121,7 @@ async (req, res) => {
       
             await browser.close();
           } catch (error) {
-            console.error(error);
+            logger.error(`Error in /generate-export-file (pdf): ${error}`);
             res.status(500).send(error);
           }
     }
@@ -131,12 +133,12 @@ async (req, res) => {
 
             // Set the appropriate response headers
             res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-            res.setHeader('Content-Disposition', 'attachment; filename=output.docx');
+            res.setHeader('Content-Disposition', 'attachment; filename=application.docx');
 
             // Pipe the stream to the response object
             stream.pipe(res);
         } catch (error) {
-            console.error(error);
+            logger.error(`Error in /generate-export-file (docx): ${error}`);
             res.status(500).send(error);
         }
     } 

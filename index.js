@@ -3,6 +3,7 @@ const routes = require('./routes/routes');
 const app = express();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
+const logger = require('./utils/logger');
 require('dotenv').config();
 
 
@@ -26,5 +27,6 @@ app.use('/api', routes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
+  logger.info(`Server Started at ${PORT}`);
   console.log(`Server Started at ${PORT}`);
 });
