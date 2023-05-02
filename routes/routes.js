@@ -8,7 +8,7 @@ const { Readable } = require('stream');
 const puppeteer = require("puppeteer"); // Import Puppeteer
 const { check, validationResult } = require('express-validator');
 const htmlToDocx = require('html-to-docx');
-const logger = require('./utils/logger');
+const logger = require('../utils/logger');
 
 
 router.post('/job-application-data', [
