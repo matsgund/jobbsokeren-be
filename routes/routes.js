@@ -120,6 +120,7 @@ async (req, res) => {
             // Pipe the stream to the response object
             stream.pipe(res);
       
+            
             await browser.close();
           } catch (error) {
             logger.error(`Error in /generate-export-file (pdf): ${error}`);
