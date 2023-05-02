@@ -98,7 +98,15 @@ async (req, res) => {
     const { htmlData, type } = req.body;
     if (type === 'pdf') {
         try {
-            const browser = await puppeteer.launch();
+            const browser = await puppeteer.launch({
+                args: [
+                  '--no-sandbox',
+                  '--disable-setuid-sandbox',
+                  '--disable-dev-shm-usage',
+                  '--single-process',
+                ],
+              });
+              
             const page = await browser.newPage();
             await page.setContent(htmlData);
       
