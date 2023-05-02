@@ -114,13 +114,14 @@ async (req, res) => {
             res.setHeader("Content-Type", "application/pdf");
             res.setHeader("Content-Disposition", "attachment; filename=application.pdf");
       
+            
             // Convert the buffer to a stream
             const stream = Readable.from(pdfBuffer);
       
             // Pipe the stream to the response object
             stream.pipe(res);
       
-            
+
             await browser.close();
           } catch (error) {
             logger.error(`Error in /generate-export-file (pdf): ${error}`);
