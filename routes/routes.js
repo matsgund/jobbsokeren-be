@@ -9,6 +9,8 @@ const puppeteer = require("puppeteer"); // Import Puppeteer
 const { check, validationResult } = require('express-validator');
 const htmlToDocx = require('html-to-docx');
 const logger = require('../utils/logger');
+const wkhtmltopdf = require('wkhtmltopdf');
+
 
 
 router.post('/job-application-data', [
@@ -98,36 +100,34 @@ async (req, res) => {
     const { htmlData, type } = req.body;
     if (type === 'pdf') {
         try {
-            const browser = await puppeteer.launch({headless: "new"});
-              
-            const page = await browser.newPage();
-            await page.setContent(htmlData);
+          // Set wkhtmltopdf options
+          const options = {
+            pageSize: 'A4',
+            marginTop: '0.3in',
+            marginRight: '1in',
+            marginBottom: '0.3in',
+            marginLeft: '1in',
+          };
       
-            const pdfBuffer = await page.pdf({ format: "A4",  margin: {
-                top: "0.3in",
-                right: "1in",
-                bottom: "0.3in",
-                left: "1in",
-              }, });
+          // Convert the HTML content to a PDF stream
+          const pdfStream = wkhtmltopdf(htmlData, options);
       
-            // Set the appropriate response headers
-            res.setHeader("Content-Type", "application/pdf");
-            res.setHeader("Content-Disposition", "attachment; filename=application.pdf");
+          // Set the appropriate response headers
+          res.setHeader('Content-Type', 'application/pdf');
+          res.setHeader('Content-Disposition', 'attachment; filename=application.pdf');
       
-            
-            // Convert the buffer to a stream
-            const stream = Readable.from(pdfBuffer);
+          // Pipe the stream to the response object
+          pdfStream.pipe(res);
       
-            // Pipe the stream to the response object
-            stream.pipe(res);
-      
-
-            await browser.close();
-          } catch (error) {
+          // Handle any errors
+          pdfStream.on('error', (error) => {
             logger.error(`Error in /generate-export-file (pdf): ${error}`);
-            res.status(500).send(error);
-          }
-    }
+          });
+        } catch (error) {
+          logger.error(`Error in /generate-export-file (pdf): ${error}`);
+          res.status(500).send(error);
+        }
+      }
     if (type === 'docx') {
         try {
             const buffer = await htmlToDocx(htmlData);
