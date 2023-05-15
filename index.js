@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const logger = require('./utils/logger');
+const mailchimp = require("@mailchimp/mailchimp_marketing");
 require('dotenv').config();
 
 

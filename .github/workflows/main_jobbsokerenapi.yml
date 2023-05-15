@@ -28,6 +28,8 @@ jobs:
           OPENAI_ORGANIZATION_ID: ${{ secrets.OPENAI_ORGANIZATION_ID }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
+          MAILCHIMP_API_KEY: ${{ secrets.MAILCHIMP_API_KEY }}
+          MAILCHIMP_LIST_ID: ${{ secrets.MAILCHIMP_LIST_ID }}
         run: |
           npm install
           npm run build --if-present

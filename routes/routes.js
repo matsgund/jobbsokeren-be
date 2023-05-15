@@ -5,11 +5,14 @@ const { openAIFetchData } = require('../utils/openAiFetcher');
 const { promptGenerator } = require('../utils/promptGenerator');
 const { textToHtml } = require('../utils/textToHtml');
 const { Readable } = require('stream');
-const puppeteer = require("puppeteer"); // Import Puppeteer
 const { check, validationResult } = require('express-validator');
 const htmlToDocx = require('html-to-docx');
 const logger = require('../utils/logger');
 const wkhtmltopdf = require('wkhtmltopdf');
+const Mailchimp = require('mailchimp-api-v3')
+const mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY);
+require('dotenv').config();
+
 
 
 
@@ -103,9 +106,9 @@ async (req, res) => {
           // Set wkhtmltopdf options
           const options = {
             pageSize: 'A4',
-            marginTop: '0.3in',
+            marginTop: '0.7in',
             marginRight: '1in',
-            marginBottom: '0.3in',
+            marginBottom: '0.7in',
             marginLeft: '1in',
           };
       
@@ -146,5 +149,32 @@ async (req, res) => {
         }
     } 
 });
+
+router.post('/subscribe-to-mailchimp', [
+    check('email_address')
+        .notEmpty().withMessage('Email is required')
+        .isEmail().withMessage('Please provide a valid email address')
+],
+async (req, res) => {
+    // Handle validation errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).json({statusCode: 422, errors: errors.array() });
+    }
+
+    mailchimp.post('/lists/2127c259b3/members', {
+        email_address : req.body.email_address,
+        status : req.body.status
+      })
+      .then(function(results) {
+        res.json(results);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+});
+
+
+
 
 module.exports = router;
