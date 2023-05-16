@@ -170,6 +170,7 @@ async (req, res) => {
         res.json(results);
       })
       .catch(function (err) {
+        logger.error(`Error in /subscribe-to-mailchimp: ${err}`);
         res.json(err);
       });
 });
