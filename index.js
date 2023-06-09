@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./routes/routes');
+const firebaseRoute = require('./routes/firebase.route');
 const app = express();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api', routes);
+app.use('/api/firebase', firebaseRoute);
 
 // Use environment variable for port, fallback to 3000
 const PORT = process.env.PORT || 3000;

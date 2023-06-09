@@ -1,4 +1,4 @@
-const { promptCv } = require("../data/promptCv");
+const { promptCv } = require("../data/promptCvSummary");
 
 const promptGeneratorCV = async ({cv_content}) => {
         const prompt = 

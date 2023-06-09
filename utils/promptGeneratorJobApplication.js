@@ -1,4 +1,4 @@
-const { promptDefault } = require("../data/promptDefault");
+const { promptDefault } = require("../data/promptJobApplication");
 
 const promptGeneratorJobApplication = async ({
     employer_job_title,
