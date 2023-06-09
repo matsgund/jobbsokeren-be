@@ -1,6 +1,6 @@
 const { promptDefault } = require("../data/promptDefault");
 
-const promptGenerator = async ({
+const promptGeneratorJobApplication = async ({
     employer_job_title,
     employer_name,
     employeer_keywords,
@@ -15,4 +15,4 @@ const promptGenerator = async ({
         return prompt;
 }
 
-module.exports = {promptGenerator};
+module.exports = {promptGeneratorJobApplication};

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 const { getWebContent } = require('../utils/webCrawler');
 const { openAIFetchData } = require('../utils/openAiFetcher');
-const { promptGenerator } = require('../utils/promptGenerator');
+const { promptGeneratorJobApplication } = require('../utils/promptGeneratorJobApplication');
 const { promptGeneratorCV } = require('../utils/promptGeneratorCV');
 const { textToHtml } = require('../utils/textToHtml');
 const { Readable } = require('stream');
@@ -51,7 +51,7 @@ async (req, res) => {
      try {
         // const targetURL = req.body.applicant_job_advertisement_url;
         // const jobApplicationResult = await getWebContent(targetURL);
-        // const prompt = await promptGenerator(jobApplicationResult);
+        // const prompt = await promptGeneratorJobApplication(jobApplicationResult);
         // const coverLetter = await openAIFetchData(prompt);
         // const htmlCoverLetter = await textToHtml(coverLetter);
         // jobApplicationResult.applicant_name = req.body.applicant_name;
