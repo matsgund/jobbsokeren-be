@@ -5,7 +5,7 @@ async function storeCvContent(req, res, next) {
     try {
         res.json(await cvService.generateSummary(req.body, req.db));
     } catch (err) {
-        console.error(`Error while storing CV content`, err.message);
+        logger.error(`Error while storing CV content`, err.message);
         next(err);
     }
 };

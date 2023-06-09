@@ -1,7 +1,6 @@
 const axios = require('axios'); 
 const cheerio = require('cheerio'); 
 
-// TODO needs to be validated!!!!
 const jobApplicationResult = {
     employer_job_title: '',
     employer_name: '',

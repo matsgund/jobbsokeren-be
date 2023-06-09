@@ -9,6 +9,7 @@ const serviceAccount = require('./serviceAccountKey.json');
 // routes
 const mailChimpRouter = require('./routes/mailChimp.route');
 const firebaseRouter = require('./routes/firebase.route');
+const jobApplicationEditorRouter = require('./routes/jobApplicationEditor.route');
 
 require('dotenv').config();
 
@@ -42,7 +43,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/firebase', firebaseRouter);
 app.use('/api/mailchimp', mailChimpRouter);
-
+app.use('/api/job-application-editor', jobApplicationEditorRouter);
 
 // Use environment variable for port, fallback to 3000
 const PORT = process.env.PORT || 3000;
