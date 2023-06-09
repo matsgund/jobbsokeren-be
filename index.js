@@ -4,7 +4,6 @@ const app = express();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const logger = require('./utils/logger');
-const mailchimp = require("@mailchimp/mailchimp_marketing");
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 require('dotenv').config();
