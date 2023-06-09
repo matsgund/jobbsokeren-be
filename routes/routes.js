@@ -3,7 +3,6 @@ const router = express.Router()
 const { getWebContent } = require('../utils/webCrawler');
 const { openAIFetchData } = require('../utils/openAiFetcher');
 const { promptGeneratorJobApplication } = require('../utils/promptGeneratorJobApplication');
-const { promptGeneratorCV } = require('../utils/promptGeneratorCV');
 const { textToHtml } = require('../utils/textToHtml');
 const { Readable } = require('stream');
 const { check, validationResult } = require('express-validator');

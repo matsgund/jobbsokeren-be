@@ -1,17 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const programmingLanguagesController = require('../controllers/programmingLanguages.controller');
+const mailchimpController = require('../controllers/mailchimp.controller');
+const { valdidateMailToMailchimp } = require('../middlewares/validation/mailchimp.validation');
 
-/* GET programming languages. */
-router.get('/', programmingLanguagesController.get);
-  
-/* POST programming language */
-router.post('/', programmingLanguagesController.create);
 
-/* PUT programming language */
-router.put('/:id', programmingLanguagesController.update);
-
-/* DELETE programming language */
-router.delete('/:id', programmingLanguagesController.remove);
+// POST /api/mailchimp/subscribe-to-mailchimp
+router.post('/subscribe-to-mailchimp', valdidateMailToMailchimp, mailchimpController.subscribe);
 
 module.exports = router;

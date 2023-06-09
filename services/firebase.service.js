@@ -1,7 +1,10 @@
 const {promptGeneratorCV} = require('../utils/promptGeneratorCV');
 const openaiService = require('./openAi.service');
 
-generateSummary = async (cv_content, uid, db) => {
+generateSummary = async (body, db) => {
+
+    const { cv_content, uid } = body;
+
     try {
         const prompt = await promptGeneratorCV({cv_content});
         const summary_of_cv = await openaiService.fetchData(prompt);
