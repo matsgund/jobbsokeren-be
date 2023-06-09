@@ -1,0 +1,2 @@
+const promptCv = "lag et sammendrag av denne cv-en.Ikke bruk mer enn 300 ord. Det er ikke nødvendig å ta med perioder og årstall fra erfaring. Del det opp i lister med personlige egenskaper, kompetanse, erfaringer. her er innholdet i CV-en: ";
+exports.promptCv = {promptCv};

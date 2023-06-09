@@ -5,8 +5,15 @@ const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const logger = require('./utils/logger');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
+const admin = require('firebase-admin');
+const serviceAccount = require('./serviceAccountKey.json');
 require('dotenv').config();
 
+// Initialize Firebase Admin SDK
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
+const db = admin.firestore(); // Get a Firestore instance
 
 // Configure the rate limiter
 const apiLimiter = rateLimit({
@@ -22,6 +29,14 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN.split(',') 
 }));
 app.use('/job-application-data', apiLimiter);
+
+// Attach db to req object
+app.use((req, res, next) => {
+  req.db = db;
+  next();
+});
+
+// Routes
 app.use('/api', routes);
 
 // Use environment variable for port, fallback to 3000
