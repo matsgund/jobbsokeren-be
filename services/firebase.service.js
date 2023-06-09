@@ -1,11 +1,22 @@
+const {promptGeneratorCV} = require('../utils/promptGeneratorCV');
+const openaiService = require('./openAi.service');
 
-const promptGeneratorCV = require('../utils/promptGeneratorCV');
-const openAIFetchData = require('../utils/openAIFetchData');
+generateSummary = async (cv_content, uid, db) => {
+    try {
+        const prompt = await promptGeneratorCV({cv_content});
+        const summary_of_cv = await openaiService.fetchData(prompt);
 
-generateSummary = async (cv_content) => {
-    const prompt = await promptGeneratorCV({cv_content});
-    const summary_of_cv = await openAIFetchData(prompt);
-    return summary_of_cv;
+        // Store the summary in Firestore
+        const docRef = db.collection('cvSummaries').doc(uid);
+        await docRef.set({
+            summary: summary_of_cv,
+        });
+
+        return { message: 'CV summary stored successfully', summary: summary_of_cv };
+    } catch (err) {
+        console.error(`Error while generating summary`, err.message);
+        throw err;
+    }
 };
 
 module.exports = {

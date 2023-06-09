@@ -1,17 +1,10 @@
-// routes/cv.js
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
-const cvController = require('../controllers/firebase.controller');
+const firebaseController = require('../controllers/firebase.controller');
+const { validateCvContent } = require('../middlewares/validation/firebase.validation');
 
-router.post('/firebase-store-cv-content', [
-    check('cv_content')
-        .notEmpty().withMessage('Cv content is required')
-        .isString().withMessage('Cv content must be a string'),
-    check('uid')
-        .notEmpty().withMessage('User id is required')
-        .isString().withMessage('User id must be a string')
-],
-cvController.storeCvContent);
+
+// POST /api/firebase/firebase-store-cv-content
+router.post('/firebase-store-cv-content', validateCvContent, firebaseController.storeCvContent);
 
 module.exports = router;

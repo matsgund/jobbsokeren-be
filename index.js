@@ -1,5 +1,4 @@
 const express = require('express');
-const firebaseRoute = require('./routes/firebase.route');
 const app = express();
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
@@ -7,6 +6,7 @@ const logger = require('./utils/logger');
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
+const firebaseRouter = require('./routes/firebase.route');
 require('dotenv').config();
 
 // Initialize Firebase Admin SDK
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api/firebase', firebaseRoute);
+app.use('/api/firebase', firebaseRouter);
 
 // Use environment variable for port, fallback to 3000
 const PORT = process.env.PORT || 3000;
