@@ -1,5 +1,5 @@
 
-const jobApplicationService = require('../services/jobApplication.service');
+const jobApplicationService = require('../services/jobApplicationEditor.service');
 const logger = require('../utils/logger');
 
 // POST /api/jobApplicationEditor/job-application-editor
@@ -15,7 +15,7 @@ generateJobApplication = async (req, res, next) => {
 // POST /api/jobApplicationEditor/generate-export-file
 exportJobApplication = async (req, res, next) => {
     try {
-        const result = await exportFileService.generateExportFile(req.body);
+        const result = await jobApplicationService.exportFile(req.body);
         if (result.type === 'pdf') {
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'attachment; filename=application.pdf');

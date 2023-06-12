@@ -1,5 +1,5 @@
 const { getWebContent } = require('../utils/webCrawler');
-const { openAIFetchData } = require('../utils/openAiFetcher');
+const openaiService = require('./openAi.service');
 const { promptGeneratorJobApplication } = require('../utils/promptGeneratorJobApplication');
 const { textToHtml } = require('../utils/textToHtml');
 const wkhtmltopdf = require('wkhtmltopdf');
@@ -10,7 +10,7 @@ generate = async (body) => {
     const targetURL = body.applicant_job_advertisement_url;
     const jobApplicationResult = await getWebContent(targetURL);
     const prompt = await promptGeneratorJobApplication(jobApplicationResult);
-    const coverLetter = await openAIFetchData(prompt);
+    const coverLetter = await openaiService.fetchData(prompt);
     const htmlCoverLetter = await textToHtml(coverLetter);
     jobApplicationResult.applicant_name = body.applicant_name;
     jobApplicationResult.applicant_email = body.applicant_email;
