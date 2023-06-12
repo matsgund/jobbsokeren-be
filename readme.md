@@ -20,11 +20,14 @@ git clone https://github.com/matsgund/jobbsokeren-be.git
 cd jobbsokeren-be
 
 3. Install the dependencies:
+```bash
 npm install
+```
 
 4. Start the server:
+```bash
 npm start
-
+```
 
 The server runs on port 3000 by default.
 
@@ -37,7 +40,7 @@ The server runs on port 3000 by default.
 
 ## Deployment
 
-Deployed to azure using github actions.
+Deployed to azure app service using github actions.
 
 ## Built With
 
