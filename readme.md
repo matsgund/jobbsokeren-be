@@ -17,7 +17,9 @@ These instructions will get you a copy of the project up and running on your loc
 git clone https://github.com/matsgund/jobbsokeren-be.git
 
 2. Navigate to the project directory:
+```bash
 cd jobbsokeren-be
+```
 
 3. Install the dependencies:
 ```bash
