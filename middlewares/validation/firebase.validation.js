@@ -10,7 +10,7 @@ const validateCvContent = [
     (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(422).json({statusCode: 422, errors: errors.array() });
+            return res.status(422).json({code: 422, message: "validation error", errors: errors.array() });
         }
         next();
     }

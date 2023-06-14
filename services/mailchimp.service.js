@@ -11,9 +11,12 @@ subscribeToMailchimp = async (body) => {
     
     try {
         const results = await mailchimp.post('/lists/2127c259b3/members', requestBody);
-        return results;
+        if (results.statusCode === 200) {
+            return ({code: 200, message: 'Email added to list'})
+        } else {
+            throw new Error('Error subscribing to Mailchimp');
+        }
     } catch (err) {
-        console.error(`Error in subscribeToMailchimp: ${err}`);
         throw err;
     }
 };

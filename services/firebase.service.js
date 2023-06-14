@@ -17,7 +17,6 @@ generateSummary = async (body, db) => {
 
         return { message: 'CV summary stored successfully', summary: summary_of_cv };
     } catch (err) {
-        console.error(`Error while generating summary`, err.message);
         throw err;
     }
 };

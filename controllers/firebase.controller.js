@@ -1,6 +1,8 @@
 const cvService = require('../services/firebase.service');
 
-// POST /api/firebase/firebase-store-cv-content
+// @desc Creates a new CV summary
+// @route POST /api/firebase/firebase-store-cv-content
+// @access Public
 async function storeCvContent(req, res, next) {
     try {
         res.json(await cvService.generateSummary(req.body, req.db));

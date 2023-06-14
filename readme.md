@@ -1,6 +1,6 @@
 # Jobbsokeren Backend
 
-Jobbsokeren is a backend service designed to assist job seekers. It provides various APIs to facilitate job application processes.
+Jobbsokeren is a backend service designed to assist job seekers. It provides various APIs to facilitate job application processes using OpenAI.
 
 ## Getting Started
 

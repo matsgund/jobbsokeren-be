@@ -11,6 +11,7 @@ const serviceAccount = require('./serviceAccountKey.json');
 const mailChimpRouter = require('./routes/mailChimp.route');
 const firebaseRouter = require('./routes/firebase.route');
 const jobApplicationEditorRouter = require('./routes/jobApplicationEditor.route');
+const swaggerRoute = require('./routes/docs.route');
 
 require('dotenv').config();
 
@@ -45,6 +46,18 @@ app.use((req, res, next) => {
 app.use('/api/firebase', firebaseRouter);
 app.use('/api/mailchimp', mailChimpRouter);
 app.use('/api/job-application-editor', jobApplicationEditorRouter);
+app.use('/api-docs', swaggerRoute);
+
+// If no route matched by this point, return a 404 Not Found error
+app.use((req, res, next) => {
+  res.status(404).json({code: 404, message: 'Resource not found' });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  logger.error(err.stack); // Log the stack trace of the error
+  res.status(500).json({code: 500, message: 'Internal Server Error' });
+});
 
 // Use environment variable for port, fallback to 3000
 const PORT = process.env.PORT || 3000;
