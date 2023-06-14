@@ -8,9 +8,9 @@ const admin = require('firebase-admin');
 const serviceAccount = require('./serviceAccountKey.json');
 
 // routes
-const mailChimpRouter = require('./routes/mailChimp.route');
+const mailChimpRouter = require('./routes/mailchimp.route');
 const firebaseRouter = require('./routes/firebase.route');
-const jobApplicationEditorRouter = require('./routes/jobApplicationEditor.route');
+const openAiRouter = require('./routes/openai.route');
 const swaggerRoute = require('./routes/docs.route');
 
 require('dotenv').config();
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 // Routes
 app.use('/api/firebase', firebaseRouter);
 app.use('/api/mailchimp', mailChimpRouter);
-app.use('/api/job-application-editor', jobApplicationEditorRouter);
+app.use('/api/openai', openAiRouter);
 app.use('/api-docs', swaggerRoute);
 
 // If no route matched by this point, return a 404 Not Found error

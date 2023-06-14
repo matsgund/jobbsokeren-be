@@ -1,4 +1,14 @@
 module.exports = {
+    OpenAiGenerateJobApplicationSuccess: {
+        description: 'Generate job application data',
+        content: {
+            'application/json': {
+                schema: {
+                    $ref: '#/components/schemas/OpenAiGenerateJobApplicationSuccess'
+                }
+            }
+        }
+    },
     200 : {
         description: 'Ok - the request was successful',
         content: {

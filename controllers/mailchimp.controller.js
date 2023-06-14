@@ -1,7 +1,9 @@
 const mailchimpService = require('../services/mailchimp.service');
 const logger = require('../utils/logger');
 
-// POST /api/firebase/firebase-store-cv-content
+// @desc Subscribe to Mailchimp
+// @route POST /api/mailchimp/subscribe-to-mailchimp
+// @access Public
 subscribe = async (req, res, next) => {
     try {
         res.json(await mailchimpService.subscribeToMailchimp(req.body));
