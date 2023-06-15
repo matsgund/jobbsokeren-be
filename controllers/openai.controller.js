@@ -9,7 +9,6 @@ generateJobApplication = async (req, res, next) => {
     try {
         res.json(await jobApplicationService.generate(req.body));
     } catch (err) {
-        logger.error(`Error in /job-application-editor: ${err}`);
         next(err);
     }
 };
@@ -29,7 +28,6 @@ exportJobApplication = async (req, res, next) => {
         }
         result.stream.pipe(res);
     } catch (err) {
-        logger.error(`Error in /job-application-editor: ${err}`);
         next(err);
     }
 };

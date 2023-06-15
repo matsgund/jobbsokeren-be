@@ -25,8 +25,6 @@ const openai = require('../controllers/openai.controller');
  *       responses:
  *         "200":
  *           $ref: '#/components/responses/OpenAiGenerateJobApplicationSuccess'
- *         "400":
- *           $ref: '#/components/responses/400'
  *         "404":
  *           $ref: '#/components/responses/404'
  *         "422":
@@ -48,10 +46,10 @@ router.post('/job-application-data',valdidateEditorUserInput, openai.generateJob
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/MailchimpSubscribe'
+ *               $ref: '#/components/schemas/OpenAiGenerateExport'
  *       responses:
  *         "200":
- *           $ref: '#/components/responses/200'
+ *           $ref: '#/components/responses/OpenAiGenerateExportSuccess'
  *         "400":
  *           $ref: '#/components/responses/400'
  *         "404":

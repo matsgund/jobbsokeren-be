@@ -9,6 +9,16 @@ module.exports = {
             }
         }
     },
+    OpenAiGenerateExportSuccess: {
+        description: 'Generate export data',
+        content: {
+            'application/json': {
+                schema: {
+                    $ref: '#/components/schemas/OpenAiGenerateExportSuccess'
+                }
+            }
+        }
+    },
     200 : {
         description: 'Ok - the request was successful',
         content: {

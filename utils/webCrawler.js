@@ -23,7 +23,7 @@ const getWebContent = async (targetURL) => {
         jobApplicationResult.employeer_keywords = $('.panel h2:contains("Nøkkelord") + p')?.text() || '';
         jobApplicationResult.employeer_job_description = $('.import-decoration')?.text() || '';
     } catch (error) {
-        console.log(error);
+        throw err;
     }
 
     return jobApplicationResult;

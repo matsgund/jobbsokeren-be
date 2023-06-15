@@ -22,13 +22,6 @@ exports.fetchData = async (prompt) => {
         });
         return completion.data.choices[0].text;
     } catch (error) {
-        if (error.response) {
-            console.log(error.response.status);
-            console.log(error.response.data);
-            return error.response.data;
-        } else {
-            console.log(error.message);
-            return error.message;
-        }
+        throw err;
     }
 };

@@ -26,8 +26,6 @@ const { validateCvContent } = require('../middlewares/validation/firebase.valida
  *       responses:
  *         "201":
  *           $ref: '#/components/responses/201'
- *         "400":
- *           $ref: '#/components/responses/400'
  *         "404":
  *           $ref: '#/components/responses/404'
  *         "422":
