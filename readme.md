@@ -36,14 +36,14 @@ npm start
 The server runs on port 3000 by default.
 
 ## Documentation
-- [Swagger](https://jobbsoknader.no/api-docs) -Link to swagger documentation
+- [Swagger](https://jobbsoknader.no/api-docs) - Link to swagger documentation
 
 ## API Endpoints
 
 - `POST /api/firebase/firebase-store-cv-content`: Stores CV content in Firebase.
 - `POST /api/mailchimp/subscribe-to-mailchimp`: Stores job application data in Firebase.
-- `POST /job-application-editor/job-application-data`: Fetches job application data.
-- `POST /job-application-editor/generate-export-file`: Generates a PDF or DOCX file from HTML data.
+- `POST /api/openai/job-application-data`: Fetches job application data.
+- `POST /api/openai/generate-export-file`: Generates a PDF or DOCX file from HTML data.
 
 ## Deployment
 
@@ -59,7 +59,7 @@ Deployed to azure app service using github actions.
 
 ## Authors
 
-- **Mats Gundersen** - *Initial work* - [matsgund](https://github.com/matsgund)
+- **Mats Gundersen**  - [matsgund](https://github.com/matsgund)
 
 
 
