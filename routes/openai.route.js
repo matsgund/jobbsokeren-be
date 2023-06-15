@@ -25,6 +25,8 @@ const openai = require('../controllers/openai.controller');
  *       responses:
  *         "200":
  *           $ref: '#/components/responses/OpenAiGenerateJobApplicationSuccess'
+ *         "401":
+ *           $ref: '#/components/responses/401'
  *         "404":
  *           $ref: '#/components/responses/404'
  *         "422":
@@ -52,6 +54,8 @@ router.post('/job-application-data',valdidateEditorUserInput, openai.generateJob
  *           $ref: '#/components/responses/OpenAiGenerateExportSuccess'
  *         "400":
  *           $ref: '#/components/responses/400'
+ *         "401":
+ *           $ref: '#/components/responses/401'
  *         "404":
  *           $ref: '#/components/responses/404'
  *         "422":

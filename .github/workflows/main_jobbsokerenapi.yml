@@ -30,6 +30,7 @@ jobs:
           CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
           MAILCHIMP_API_KEY: ${{ secrets.MAILCHIMP_API_KEY }}
           MAILCHIMP_LIST_ID: ${{ secrets.MAILCHIMP_LIST_ID }}
+          API_KEYS: ${{ secrets.API_KEYS }}
           
         run: |
           npm install

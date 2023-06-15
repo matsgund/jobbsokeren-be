@@ -27,6 +27,8 @@ const { valdidateMailToMailchimp } = require('../middlewares/validation/mailchim
  *           $ref: '#/components/responses/200'
  *         "400":
  *           $ref: '#/components/responses/400'
+ *         "401":
+ *           $ref: '#/components/responses/401'
  *         "404":
  *           $ref: '#/components/responses/404'
  *         "422":
