@@ -11,6 +11,7 @@ const NotFoundError = require('./notFoundError');
 const SuccessResponse = require('./successResponse');
 const CreatedResponse = require('./createdResponse');
 const ServerError = require('./serverError');
+const ApiKeyAuth = require('../securitySchemes');
 
 
 module.exports = {
@@ -27,4 +28,5 @@ module.exports = {
     SuccessResponse,
     CreatedResponse,
     ServerError,
+    ApiKeyAuth,
 };

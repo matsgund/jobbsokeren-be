@@ -12,7 +12,7 @@ module.exports = {
         }
     },
     example: {
-        email_address: 'olaNordmann4@hotmail.com',
+        email_address: 'olaNordmann6@hotmail.com',
         status: 'subscribed'
     }
 };

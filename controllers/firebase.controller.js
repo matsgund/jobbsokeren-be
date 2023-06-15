@@ -5,7 +5,7 @@ const cvService = require('../services/firebase.service');
 // @access Public
 async function storeCvContent(req, res, next) {
     try {
-        res.json(await cvService.generateSummary(req.body, req.db));
+        res.status(201).json(await cvService.generateSummary(req.body, req.db));
     } catch (err) {
         next(err);
     }

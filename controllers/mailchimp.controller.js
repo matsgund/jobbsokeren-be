@@ -6,7 +6,7 @@ const logger = require('../utils/logger');
 // @access Public
 subscribe = async (req, res, next) => {
     try {
-        res.json(await mailchimpService.subscribeToMailchimp(req.body));
+        res.status(200).json(await mailchimpService.subscribeToMailchimp(req.body));
     } catch (err) {
         if (err.response && err.response.body && err.response.body.title === 'Member Exists') {
             logger.error(err.stack);
