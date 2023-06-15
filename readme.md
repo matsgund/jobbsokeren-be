@@ -35,6 +35,9 @@ npm start
 
 The server runs on port 3000 by default.
 
+## Documentation
+- [Swagger](https://jobbsoknader.no/api-docs) -Link to swagger documentation
+
 ## API Endpoints
 
 - `POST /api/firebase/firebase-store-cv-content`: Stores CV content in Firebase.
