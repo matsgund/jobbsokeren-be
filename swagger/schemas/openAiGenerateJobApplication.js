@@ -25,7 +25,11 @@ module.exports = {
         applicant_zip_code: {
             type: 'string',
             description: 'The zip code of the applicant'
-        }
+        },
+        applicant_cv_summary: {
+            type: 'string',
+            description: 'The summary of the CV'
+        },    
     },
     example: {
         applicant_job_advertisement_url: 'https://www.finn.no/job/fulltime/ad.html?finnkode=262151707',
@@ -33,6 +37,7 @@ module.exports = {
         applicant_email: 'exampl@hotmial.com',
         applicant_address: 'Example Street 123',
         applicant_city: 'Example City',
-        applicant_zip_code: '1234'
+        applicant_zip_code: '1234',
+        applicant_cv_summary: 'This is a summary of the CV'
     }
 };

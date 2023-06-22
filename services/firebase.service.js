@@ -12,7 +12,7 @@ generateSummary = async (body, db) => {
         // Store the summary in Firestore
         const docRef = db.collection('cvSummaries').doc(uid);
         await docRef.set({
-            summary: summary_of_cv,
+            applicant_cv_summary: summary_of_cv,
         });
 
         return({code: 201, message: 'CV summary stored successfully'});

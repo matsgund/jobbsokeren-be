@@ -9,7 +9,7 @@ const htmlToDocx = require('html-to-docx');
 generate = async (body) => {
     const targetURL = body.applicant_job_advertisement_url;
     const jobApplicationResult = await getWebContent(targetURL);
-    const prompt = await promptGeneratorJobApplication(jobApplicationResult);
+    const prompt = await promptGeneratorJobApplication(jobApplicationResult, body.applicant_cv_summary);
     const coverLetter = await openaiService.fetchData(prompt);
     const htmlCoverLetter = await textToHtml(coverLetter);
     jobApplicationResult.applicant_name = body.applicant_name;
