@@ -36,7 +36,7 @@ npm start
 The server runs on port 3000 by default.
 
 ## Documentation
-- [Swagger](https://jobbsoknader.no/api-docs) - Link to swagger documentation
+- [Swagger](https://jobbsokerenapi.azurewebsites.net/api-docs) - Link to swagger documentation
 
 ## API Endpoints
 
